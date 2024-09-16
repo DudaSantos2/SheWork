@@ -1,4 +1,23 @@
-<div style="width: 100%; padding: 60px 80px">
+<style>
+    .container-login {
+        width: 100%;
+        padding: 60px 400px;
+    }
+
+    @media (max-width: 1280px) {
+        .container-login {
+            padding: 60px 100px
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-login {
+            padding: 60px 10px
+        }
+    }
+</style>
+
+<div class="container-login">
     <div style="margin-bottom: 12px; display: flex; flex-direction: column; ">
         <h1 style="font-size: 28px">Crie sua conta</h1>
         <p style="color: rgba(0, 0, 0, 0.5)">Já possui uma conta? <a

@@ -1,7 +1,4 @@
 <?php
-
-namespace backend;
-
 class Database
 {
     public $conexao;
