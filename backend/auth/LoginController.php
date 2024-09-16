@@ -1,7 +1,7 @@
 <?php
 require_once '../Database.php';
 
-$db = new backend\Database();
+$db = new Database();
 
 $email = $_POST['email'];
 $password = md5($_POST['password']);
