@@ -20,8 +20,8 @@
 <div class="container-login">
     <div style="margin-bottom: 12px; display: flex; flex-direction: column; ">
         <h1 style="font-size: 28px">Crie sua conta</h1>
-        <p style="color: rgba(0, 0, 0, 0.5)">Já possui uma conta? <a
-                    style="text-decoration: underline; color: royalblue; cursor: pointer; transition: all;">logar</a>
+        <p style="color: rgba(0, 0, 0, 0.5)">Já possui uma conta? <a href="painel.php?go=login"
+                                                                     style="text-decoration: underline; color: royalblue; cursor: pointer; transition: all;">logar</a>
         </p>
     </div>
 
@@ -74,30 +74,35 @@
                 html: "O campo [email] é obrigatório!",
                 icon: "warning"
             })
+            return
         } else if ($('#password').val() == "") {
             swal.fire({
                 title: "Aviso!",
                 html: "O campo [senha] é obrigatório!",
                 icon: "warning"
             })
+            return
         } else if ($('#name').val() == "") {
             swal.fire({
                 title: "Aviso!",
                 html: "O campo [nome] é obrigatório!",
                 icon: "warning"
             })
+            return
         } else if ($('#cep').val() == "") {
             swal.fire({
                 title: "Aviso!",
                 html: "O campo [CEP] é obrigatório!",
                 icon: "warning"
             })
+            return
         } else if ($('#telefone').val() == "") {
             swal.fire({
                 title: "Aviso!",
                 html: "O campo [telefone] é obrigatório!",
                 icon: "warning"
             })
+            return
         }
 
         form.append("email", $('#email').val());
