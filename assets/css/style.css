@@ -151,6 +151,16 @@ input:focus, textarea:focus {
     color: #861AD2
 }
 
+.titulo {
+    color: #3F3F3F;
+    font-size: 40px
+}
+
+.titulo span {
+    color: #861AD2;
+    font-size: 50px
+}
+
 .text-nav-sobre {
     font-size: 20px;
     text-align: justify

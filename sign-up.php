@@ -1,6 +1,7 @@
 <style>
     .container-login {
         width: 100%;
+        height: 70%;
         padding: 60px 400px;
     }
 
@@ -55,6 +56,9 @@
                 </label>
             </div>
         </div>
+        <select class="form-select" style="display: none" id="servicos">
+            <option selected>Selecione o serviço prestado</option>
+        </select>
         <div class="col-12">
             <button id="enviar" type="button" class="btn btn-primary">Cadastrar</button>
         </div>
@@ -65,6 +69,28 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    $('#is_collaborator').change(() => {
+        if (!$('#is_collaborator').is(":checked")) {
+            $('#servicos').css('display', 'none')
+        } else {
+            $('#servicos').css('display', 'flex')
+        }
+    })
+
+    function BuscarServicos() {
+        fetch("./backend/services/ServiceController.php", {method: 'GET'})
+            .then(async (res) => {
+                    const resJson = await res.json();
+
+                    resJson.dados.forEach((ser) => {
+                        $('#servicos').append(`<option value=${ser.id}>${ser.descricao}</option>`)
+                    })
+                }
+            )
+    }
+
+    BuscarServicos();
+
     $('#enviar').click(() => {
         const form = new FormData();
 
@@ -112,11 +138,21 @@
         form.append("name", $('#name').val());
         form.append("isCollaborator", $('#is_collaborator').is(":checked") ? 1 : 0)
 
+        if ($('#is_collaborator').is(":checked")) {
+            form.append('servico', $('#servicos').val())
+        }
+
         fetch("./backend/auth/RegisterController.php", {method: 'POST', body: form}).then(res => {
             swal.fire({
                 title: "Sucesso",
                 icon: "success",
-                html: "Usuário cadastrado com sucesso!"
+                html: "Usuário cadastrado com sucesso!",
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+            }).then(res => {
+                if (res.value) {
+                    window.location.href = '/pit/painel.php?go=login'
+                }
             })
         }).catch((error) => {
             console.log(error)

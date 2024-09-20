@@ -1,5 +1,8 @@
 <?php
 require_once '../Database.php';
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 $db = new Database();
 
@@ -20,4 +23,14 @@ if ($password != $result['password']) {
     return;
 }
 
-echo json_encode(["status" => true, "resposta" => "Usuário logado!"]);
+$_SESSION['user'] = $result;
+
+$page = "";
+
+if ($result['isCollaborator'] == 1) {
+    $page = "/pit/pages/home.php";
+} else {
+    $page = "/pit/pages/home_cliente.php";
+}
+
+echo json_encode(["status" => true, "resposta" => "Usuário logado!", "data" => $page]);

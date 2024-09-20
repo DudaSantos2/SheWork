@@ -1,6 +1,7 @@
 <style>
     .container-login {
         width: 100%;
+        height: 70%;
         padding: 60px 400px;
     }
 
@@ -35,7 +36,7 @@
             <input type="password" class="form-control" id="password">
         </div>
         <div class="mb-3 form-check">
-            <input style="padding: 8px !important; margin-top: 0px !important;" type="checkbox" class="form-check-input"
+            <input type="checkbox" class="form-check-input"
                    id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Lembre de mim</label>
         </div>
@@ -85,7 +86,13 @@
             swal.fire({
                 title: "Sucesso",
                 icon: "success",
-                html: "Usuário logado com sucesso!"
+                html: "Usuário logado com sucesso!",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+            }).then(res => {
+                if (res.value) {
+                    window.location.href = response.data;
+                }
             })
         }).catch((error) => {
             console.log(error)

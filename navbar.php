@@ -77,7 +77,7 @@
             <div class="d-flex align-items-center gap-5">
                 <ul class="d-flex list-unstyled align-items-center gap-3 mb-0 navbar-desktop">
                     <li>
-                        <a href="painel.php?go=login" class="btn-login">Login<i class="fal fa-sign-in-alt"></i></a>
+                        <a href="painel.php?go=login" class="btn-login">Login</a>
                     </li>
                     <li><a href="painel.php?go=signup" class="btn-criar-conta">Criar Conta</a></li>
                 </ul>

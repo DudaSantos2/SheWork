@@ -10,7 +10,9 @@ $phone = $_POST['phone'];
 $cep = $_POST['cep'];
 $isCollaborator = $_POST['isCollaborator'];
 
-$sql = "INSERT INTO users values (default, '$email', '$password', '$name', '$phone', '$cep', $isCollaborator)";
+$servico = $isCollaborator == 1 ? $_POST['servico'] : 'null';
+
+$sql = "INSERT INTO users values (default, '$email', '$password', '$name', '$phone', '$cep', $isCollaborator, $servico, null)";
 
 $db->conexao->query($sql);
 
