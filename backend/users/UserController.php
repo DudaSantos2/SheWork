@@ -34,6 +34,28 @@ function update()
     }
 }
 
-if ($_POST['metodo'] == 'update') {
-    update();
+function delete()
+{
+    $db = new Database();
+
+    $id = $_SESSION['user']['id'];
+
+    $sql = "delete from users where id = $id";
+    $stmt = $db->conexao->prepare($sql);
+    if ($stmt->execute()) {
+        unset($_SESSION['user']);
+        echo json_encode(['status' => true, 'mensagem' => "Usuário deletado!"]);
+    } else {
+        echo json_encode(['status' => false, 'mensagem' => "Ocorreu um erro ao deletar seu usuário"]);
+    }
+}
+
+if (isset($_POST)) {
+    if ($_POST['metodo'] == 'update') {
+        update();
+    }
+
+    if ($_POST['metodo'] == 'delete') {
+        delete();
+    }
 }

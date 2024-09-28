@@ -58,17 +58,6 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 80px
 }
 
-input, textarea {
-    padding: 15px;
-    border-radius: 10px;
-    transition: all ease;
-}
-
-input:focus, textarea:focus {
-    border: 1px solid #861AD2 !important;
-    outline: none;
-}
-
 .textinho-form {
     font-size: 10px;
     text-align: center
@@ -102,6 +91,16 @@ input:focus, textarea:focus {
     color: #000;
     transition: all ease 400ms;
 
+}
+
+button.btn.btn-primary {
+    background-color: #9B2BCF!important;
+    border: 1px solid #9B2BCF!important;
+}
+
+button.btn.btn-primary:hover {
+    background-color: #6A0DAD!important;
+    border: 1px solid #6A0DAD!important;
 }
 
 .formulario:hover .span-contato {

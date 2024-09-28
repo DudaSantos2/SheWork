@@ -2,25 +2,35 @@
     .container-login {
         width: 100%;
         height: 70%;
-        padding: 60px 400px;
+        padding: 160px 400px!important;
     }
 
     @media (max-width: 1280px) {
         .container-login {
-            padding: 60px 100px
+            padding: 160px 100px!important
         }
     }
 
     @media (max-width: 768px) {
         .container-login {
-            padding: 60px 10px
+            padding: 110px 10px!important
         }
+    }
+
+    button.btn.btn-primary {
+        background-color: #9B2BCF!important;
+        border: 1px solid #9B2BCF!important;
+    }
+
+    button.btn.btn-primary:hover {
+        background-color: #6A0DAD!important;
+        border: 1px solid #6A0DAD!important;
     }
 </style>
 
 <div class="container-login">
     <div style="margin-bottom: 12px; display: flex; flex-direction: column; ">
-        <h1 style="font-size: 28px">Entre em sua conta</h1>
+        <h1 style="font-size: 28px">Entre </h1>
         <p style="color: rgba(0, 0, 0, 0.5)">Não possui uma conta? <a href="painel.php?go=signup"
                                                                       style="text-decoration: underline; color: royalblue; cursor: pointer; transition: all;">cadastre-se</a>
         </p>
@@ -70,7 +80,7 @@
         form.append("email", $('#email').val());
         form.append("password", $('#password').val());
 
-        fetch("./backend/auth/LoginController.php", {method: 'POST', body: form}).then(async res => {
+        fetch("../backend/auth/LoginController.php", {method: 'POST', body: form}).then(async res => {
             const response = await res.json();
 
             if (!response.status) {

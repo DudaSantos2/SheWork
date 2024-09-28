@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 
 <html lang="pt-br">
 <head>
-    <?php include_once('../head.php') ?>
+    <?php include_once('../pages/head.php') ?>
     <link rel="stylesheet" href="../assets/css/style.css">
 
 </head>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['user'])) {
                         <p class="m-0" id="phone-contato"></p>
                     </div>
                     <div class="d-flex align-items-center gap-3">
-                        <i class="fa-solid fa-envelope"></i>
+                        <i style="color: #454545" class="fa-solid fa-envelope"></i>
                         <p class="m-0" id="email-contato"></p>
                     </div>
                 </div>
@@ -59,47 +59,107 @@ if (!isset($_SESSION['user'])) {
         </div>
     </div>
 </div>
+<!--
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+</div>-->
 
-<?php include('../scripts.php') ?>
+
+<?php include('../pages/scripts.php') ?>
 
 <script>
-    $(document).ready(() => {
-        function buscaSolicitacoes() {
-            const form = new FormData();
-            form.append("metodo", "get")
+    function buscaSolicitacoes() {
+        const form = new FormData();
+        form.append("metodo", "get")
 
-            fetch("../backend/requests/RequestController.php", {method: "POST", body: form}).then(async (res) => {
-                const requests = await res.json()
+        fetch("../backend/requests/RequestController.php", {method: "POST", body: form}).then(async (res) => {
+            $('#container-cards').empty()
 
-                if (requests.dados.length === 0) {
-                    $('#cont').html('Nenhuma solicitação ativa!');
-                } else if (requests.dados.length === 1) {
-                    $('#cont').html(`${requests.dados.length} solicitação ativa!`);
+            const requests = await res.json();
+
+            if (requests.dados.length === 0) {
+                $('#cont').html('Nenhuma solicitação ativa!');
+            } else if (requests.dados.length === 1) {
+                $('#cont').html(`${requests.dados.length} solicitação ativa!`);
+            } else {
+                $('#cont').html(`${requests.dados.length} solicitações ativas!`);
+            }
+
+
+            requests.dados.forEach((request) => {
+                let status = "";
+
+                if (request.status == 1) {
+                    status = "<span class='badge rounded-pill text-bg-success'>Concluído</span>"
                 } else {
-                    $('#cont').html(`${requests.dados.length} solicitações ativas!`);
+                    status = '<span class="badge rounded-pill text-bg-info">Em aberto</span>'
                 }
 
-                requests.dados.forEach((request) => {
-                    const card = `<div class="col">
+                const card = `<div class="col">
                 <div class="card">
                     <div class="card-header">
                         Solicitação
+                        ${status}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${request.name}</h5>
                         <p class="card-text">${request.descricao}</p>
-                        <button type="button" onclick="atualizaModal('${request.phone}', '${request.email}')" data-bs-toggle="modal" data-bs-target="#modal-contatos" class="btn btn-primary">Entrar em contato</button>
+                        <div class="d-flex align-items-center gap-2 justify-content-between">
+                            <button type="button" onclick="atualizaModal('${request.phone}', '${request.email}')" data-bs-toggle="modal" data-bs-target="#modal-contatos" class="btn btn-primary">Entrar em contato</button>
+                                <button style="border: none!important; ${request.status == 1 ? "cursor: not-allowed;" : "cursor: normal;"}" type="button" ${request.status == 1 ? "disabled" : ""} onclick="marcarConcluido(${request.id})" class="btn btn-transparent"><i style="font-size: 20px ;color: #52CB52;" class="fa-solid fa-square-check"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>`;
 
-                    $('#container-cards').append(card)
-                })
+                $('#container-cards').append(card)
             })
-        }
+        })
+    }
 
+    $(document).ready(() => {
         buscaSolicitacoes();
     })
+
+    function marcarConcluido(id) {
+        swal.fire({
+            title: "Aviso",
+            icon: "info",
+            html: "Deseja marcar como concluído?",
+        }).then(res => {
+            if (res.value) {
+                const body = new FormData();
+                body.append("metodo", "check");
+                body.append("id", id);
+
+                fetch("../backend/requests/RequestController.php", {method: "POST", body})
+                    .then(async (res) => {
+                        const response = await res.json();
+
+                        if (response.status) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: "bottom-start",
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.onmouseenter = Swal.stopTimer;
+                                    toast.onmouseleave = Swal.resumeTimer;
+                                }
+                            });
+                            Toast.fire({
+                                icon: "success",
+                                title: "Alteração feita com sucesso!"
+                            });
+
+                            buscaSolicitacoes();
+                        }
+                    })
+            }
+        })
+    }
 
     function atualizaModal(phone, email) {
         $('#phone-contato').html(phone)

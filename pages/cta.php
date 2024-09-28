@@ -1,6 +1,6 @@
 <style>
     .cta{
-        background-image: url(assets/img/banner-1.jpg);
+        background-image: url(../assets/img/banner-1.jpg);
         height: 80vh;
         background-size: cover;
     }
@@ -41,7 +41,7 @@
                   <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="grupo-quemsomos">
-                                <img src="assets/img/foto-ceo.jpeg"
+                                <img src="../assets/img/foto-ceo.jpeg"
                                      width="100"
                                      heigth="100"
                                      class="img-grupo-quemsomos mt-2" alt="">

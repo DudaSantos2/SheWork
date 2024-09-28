@@ -16,7 +16,7 @@ if (!empty($_SESSION['user']['avatar'])) {
 
 <html lang="pt-br">
 <head>
-    <?php include_once('../head.php') ?>
+    <?php include_once('../pages/head.php') ?>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -39,77 +39,118 @@ if (!empty($_SESSION['user']['avatar'])) {
                 <input id="avatar" type="file" class="form-control">
             </div>
         </div>
-        <button id="save" class="btn btn-primary">Salvar</button>
+        <div class="d-flex flex-column gap-2">
+            <button id="save" class="btn btn-primary">Salvar</button>
+            <button id="delete" class="btn btn-danger">Deletar conta</button>
+        </div>
     </div>
 </div>
 
-<?php include('../scripts.php') ?>
+<?php include('../pages/scripts.php') ?>
 <script>
     $(document).ready(() => {
-        const avatarUrl = "<?php echo $avatarUrl; ?>";
+        const avatarUrl = "<?= $avatarUrl; ?>";
 
         if (avatarUrl) {
             $('#preview').html(`
             <div style="background-size: cover; background-repeat: no-repeat; background-position: center;border-radius: 1000px; background-image: url('${avatarUrl}'); width: 80px; height: 80px"""></div>
         `)
         }
-    })
 
-    $('#avatar').change(() => {
-        const file = $('#avatar').prop('files')
-
-        const src = URL.createObjectURL(file[0])
-
-        $('#preview').html(`
-            <div style="background-size: cover; background-repeat: no-repeat; background-position: center;border-radius: 1000px; background-image: url('${src}'); width: 80px; height: 80px"></div>
-        `)
-    })
-
-    $('#save').click(() => {
-        const file = $('#avatar').prop('files')
-        if (file.length > 0) {
-            swal.fire({
-                title: "Carregando",
-                showCancelButton: false,
-                showConfirmButton: false,
-                willOpen: () => Swal.showLoading()
-            })
-
-            const form = new FormData();
-            form.append('avatar', file[0]);
-            form.append('metodo', 'update')
-
-            fetch("../backend/users/UserController", {method: "POST", body: form})
-                .then(async (res) => {
-                    const json = await res.json()
-
-                    if (json.status) {
-                        swal.fire({
-                            title: "Sucesso!",
-                            html: "Seu usuário foi atualizado com sucesso!",
-                            icon: "success"
-                        })
-                    } else {
-                        swal.fire({
-                            title: "Erro!",
-                            html: json.mensagem,
-                            icon: "error"
-                        })
-                    }
-                }).catch(() => {
-                swal.fire({
-                    title: "Erro!",
-                    html: "Erro ao realizar o upload desta imagem",
-                    icon: "error"
-                })
-            })
-        } else {
+        $('#delete').click(() => {
             swal.fire({
                 title: "Aviso",
                 icon: "warning",
-                html: "Você não selecionou nenhuma foto!"
+                html: "Deseja realmente excluir esta conta?",
+                preConfirm: () => {
+                    const body = new FormData();
+
+                    body.append("metodo", "delete");
+
+                    fetch("../backend/users/UserController", {method: "POST", body})
+                        .then(async (res) => {
+                            const json = await res.json();
+
+                            if (json.status) {
+                                swal.fire({
+                                    title: "Sucesso",
+                                    html: json.mensagem,
+                                    icon: "success",
+                                    preConfirm: () => {
+                                        window.location.href = "/pit"
+                                    }
+                                })
+                            } else {
+                                swal.fire({
+                                    title: "Sucesso",
+                                    html: json.mensagem,
+                                    icon: "error",
+                                    preConfirm: () => {
+                                        window.location.href = "/pit"
+                                    }
+                                })
+                            }
+                        })
+                }
             })
-        }
+        })
+
+        $('#avatar').change(() => {
+            const file = $('#avatar').prop('files')
+
+            const src = URL.createObjectURL(file[0])
+
+            $('#preview').html(`
+            <div style="background-size: cover; background-repeat: no-repeat; background-position: center;border-radius: 1000px; background-image: url('${src}'); width: 80px; height: 80px"></div>
+        `)
+        })
+
+        $('#save').click(() => {
+            const file = $('#avatar').prop('files')
+            if (file.length > 0) {
+                swal.fire({
+                    title: "Carregando",
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    willOpen: () => Swal.showLoading()
+                })
+
+                const form = new FormData();
+                form.append('avatar', file[0]);
+                form.append('metodo', 'update')
+
+                fetch("../backend/users/UserController", {method: "POST", body: form})
+                    .then(async (res) => {
+                        const json = await res.json()
+
+                        if (json.status) {
+                            swal.fire({
+                                title: "Sucesso!",
+                                html: "Seu usuário foi atualizado com sucesso!",
+                                icon: "success"
+                            })
+                        } else {
+                            swal.fire({
+                                title: "Erro!",
+                                html: json.mensagem,
+                                icon: "error"
+                            })
+                        }
+                    }).catch(() => {
+                    swal.fire({
+                        title: "Erro!",
+                        html: "Erro ao realizar o upload desta imagem",
+                        icon: "error"
+                    })
+                })
+            } else {
+                swal.fire({
+                    title: "Aviso",
+                    icon: "warning",
+                    html: "Você não selecionou nenhuma foto!"
+                })
+            }
+        })
     })
 </script>
 </body>

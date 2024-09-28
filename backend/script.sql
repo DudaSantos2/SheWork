@@ -29,6 +29,18 @@ create table requests
     id_usuario     int,
     id_colaborador int,
     descricao      text,
+    status         bit default 0,
+    foreign key (id_usuario) references users (id),
+    foreign key (id_colaborador) references users (id)
+);
+
+
+create table reviews
+(
+    id             int primary key auto_increment,
+    id_usuario    int not null,
+    id_colaborador int not null,
+    nota           int not null,
     foreign key (id_usuario) references users (id),
     foreign key (id_colaborador) references users (id)
 );

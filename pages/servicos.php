@@ -1,5 +1,5 @@
 <style>
-    .card-servico{
+    .card-servico {
         background-color: #861AD2;
         border-bottom-left-radius: 5px;
         border-top-left-radius: 20px;
@@ -11,45 +11,55 @@
         margin-bottom: 20px;
         border: 2px solid transparent;
     }
-    .card-servico:hover{
+
+    .card-servico:hover {
         background-color: #fff;
         border: 2px solid #861AD2
-        
+
     }
-    .icon-card{
+
+    .icon-card {
         color: #fff;
     }
-    .icon-card i{
+
+    .icon-card i {
         padding: 20px;
         border-radius: 30%;
         border: 2px solid #fff;
     }
-    .card-servico:hover .icon-card i{
+
+    .card-servico:hover .icon-card i {
         border: 2px solid #861AD2
     }
-    .card-servico:hover .icon-card{
+
+    .card-servico:hover .icon-card {
         color: #861AD2
     }
-    .ml-5{
+
+    .ml-5 {
         margin-left: 15px;
         width: 100%;
         text-align: center
     }
-    .bg-servico{
+
+    .bg-servico {
         padding-top: 120px;
         padding-bottom: 120px;
         background-color: #4c0677;
     }
-    .title-servico{
+
+    .title-servico {
         color: #fff;
         margin-bottom: 20px;
         font-size: 65px;
         font-weight: 600;
     }
-    .link-servico{
+
+    .link-servico {
         text-decoration: none;
     }
-    .link-servico:hover{
+
+    .link-servico:hover {
         text-decoration: none
     }
 </style>
@@ -63,7 +73,9 @@
                 </h2>
             </div>
             <div class="col-md-9 d-flex align-items-center">
-                <p class="text-white">Na She Work, nossas especialistas realizam serviços de manutenção e reparos exclusivamente para mulheres, garantindo segurança, profissionalismo e conforto em cada atendimento.</p>
+                <p class="text-white">Na She Work, nossas especialistas realizam serviços de manutenção e reparos
+                    exclusivamente para mulheres, garantindo segurança, profissionalismo e conforto em cada
+                    atendimento.</p>
             </div>
             <div class="col-md-3">
                 <div class="card-servico wow animate__animated animate__fadeInLeft" data-wow-duration="0.2s">
@@ -103,14 +115,16 @@
             <div class="col-md-3">
                 <div class="card-servico wow animate__animated animate__fadeInLeft" data-wow-duration="1s">
                     <div>
-                        <h3 class="icon-card"><i class="fal fa-cocktail"></i></i><span class="ml-5">Bartender</span></h3>
+                        <h3 class="icon-card"><i class="fal fa-cocktail"></i></i><span class="ml-5">Bartender</span>
+                        </h3>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card-servico wow animate__animated animate__fadeInLeft" data-wow-duration="1.2s">
                     <div>
-                        <h3 class="icon-card"><i class="fal fa-car-mechanic"></i></i><span class="ml-5">Mecânica</span></h3>
+                        <h3 class="icon-card"><i class="fal fa-car-mechanic"></i></i><span class="ml-5">Mecânica</span>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -138,7 +152,8 @@
             <div class="col-md-3">
                 <div class="card-servico wow animate__animated animate__fadeInLeft" data-wow-duration="2s">
                     <div>
-                        <h3 class="icon-card"><i class="fal fa-graduation-cap"></i><span class="ml-5">Professora</span></h3>
+                        <h3 class="icon-card"><i class="fal fa-graduation-cap"></i><span class="ml-5">Professora</span>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -150,7 +165,7 @@
                         </div>
                     </div>
                 </a>
-                
+
             </div>
         </div>
     </div>

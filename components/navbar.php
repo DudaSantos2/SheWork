@@ -70,16 +70,16 @@
 
         <div class="d-flex justify-content-between w-100 align-items-center">
             <div>
-                <a class="titulo" href="index.php"><h2><span><strong style="font-size: 34px">SHE</strong></span>work
+                <a class="titulo" href="/pit/"><h2><span><strong style="font-size: 34px">SHE</strong></span>work
                     </h2></a>
             </div>
             <!--  NAVBAR DO DESKTOP AQUI  -->
             <div class="d-flex align-items-center gap-5">
                 <ul class="d-flex list-unstyled align-items-center gap-3 mb-0 navbar-desktop">
                     <li>
-                        <a href="painel.php?go=login" class="btn-login">Login</a>
+                        <a href="/pit/pages/painel.php?go=login" class="btn-login">Login</a>
                     </li>
-                    <li><a href="painel.php?go=signup" class="btn-criar-conta">Criar Conta</a></li>
+                    <li><a href="/pit/pages/painel.php?go=signup" class="btn-criar-conta">Criar Conta</a></li>
                 </ul>
                 <!--    FIM DA NAVBAR    -->
                 <div>
@@ -97,13 +97,16 @@
                         </div>
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                                <li class="nav-item"><a class="nav-link" href="index.php">Início</a></li>
-                                <li class="nav-item"><a class="nav-link" href="painel.php?go=sobre-nos">Quem somos</a>
+                                <li class="nav-item"><a class="nav-link" href="/index.php">Início</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/pit/pages/painel.php?go=sobre-nos">Quem
+                                        somos</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="painel.php?go=colaborador">Seja
+                                <li class="nav-item"><a class="nav-link" href="/pit/pages/painel.php?go=colaborador">Seja
                                         colaborador</a></li>
-                                <li class="nav-item"><a class="nav-link" href="painel.php?go=config">Serviços</a></li>
-                                <li class="nav-item"><a class="nav-link" href="painel.php?go=contato">Contato</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="/pit/pages/painel.php?go=config">Serviços</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="/pit/pages/painel.php?go=contato">Contato</a></li>
                             </ul>
                         </div>
                     </div>

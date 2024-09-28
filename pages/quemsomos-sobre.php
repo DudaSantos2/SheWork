@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-md-6 d-flex justify-content-center">
-                <img src="assets/img/predio-sobre.jpeg" class="img-ceo" alt="">
+                <img src="../assets/img/predio-sobre.jpeg" class="img-ceo" alt="">
             </div>
         </div>
     </div>

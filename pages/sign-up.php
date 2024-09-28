@@ -2,19 +2,29 @@
     .container-login {
         width: 100%;
         height: 70%;
-        padding: 60px 400px;
+        padding: 160px 400px!important;
     }
 
     @media (max-width: 1280px) {
         .container-login {
-            padding: 60px 100px
+            padding: 160px 100px!important;
         }
     }
 
     @media (max-width: 768px) {
         .container-login {
-            padding: 60px 10px
+            padding: 110px 10px!important
         }
+    }
+
+    button.btn.btn-primary {
+        background-color: #9B2BCF!important;
+        border: 1px solid #9B2BCF!important;
+    }
+
+    button.btn.btn-primary:hover {
+        background-color: #6A0DAD!important;
+        border: 1px solid #6A0DAD!important;
     }
 </style>
 
@@ -78,7 +88,7 @@
     })
 
     function BuscarServicos() {
-        fetch("./backend/services/ServiceController.php", {method: 'GET'})
+        fetch("../backend/services/ServiceController.php", {method: 'GET'})
             .then(async (res) => {
                     const resJson = await res.json();
 
@@ -142,7 +152,7 @@
             form.append('servico', $('#servicos').val())
         }
 
-        fetch("./backend/auth/RegisterController.php", {method: 'POST', body: form}).then(res => {
+        fetch("../backend/auth/RegisterController.php", {method: 'POST', body: form}).then(res => {
             swal.fire({
                 title: "Sucesso",
                 icon: "success",
@@ -151,7 +161,7 @@
                 allowOutsideClick: false,
             }).then(res => {
                 if (res.value) {
-                    window.location.href = '/pit/painel.php?go=login'
+                        window.location.href = 'painel.php?go=login'
                 }
             })
         }).catch((error) => {

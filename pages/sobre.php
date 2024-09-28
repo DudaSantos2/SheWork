@@ -4,7 +4,7 @@
     <div class="container sec">
         <div class="row">
             <div class="col-md-5">
-                <img src="assets/img/sobre.jpg" class="wow animate__animated animate__fadeInLeft" data-wow-duration="2s" width="100%" alt="">
+                <img src="../assets/img/sobre.jpg" class="wow animate__animated animate__fadeInLeft" data-wow-duration="2s" width="100%" alt="">
             </div>
             <div class="col-md-7">
                 <div class="mt-20">

@@ -1,15 +1,15 @@
 <?php
-var_dump($_REQUEST['go']);
+//var_dump($_REQUEST['go']);
 ?>
 
 <!doctype html>
 <html>
 <head>
-    <?php include('head.php') ?>
+    <?php include('./head.php') ?>
 </head>
 
 <body>
-<?php include('navbar.php'); ?>
+<?php include('../components/navbar.php'); ?>
 
 <?php if ($_REQUEST['go'] == 'criar-sua-conta') { ?>
     <?php include('register.php') ?>

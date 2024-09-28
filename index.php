@@ -1,18 +1,18 @@
 <!doctype html>
 <html>
 <head>
-    <?php include('head.php') ?>
+    <?php include('pages/head.php') ?>
 </head>
 
 <body>
-<?php include('navbar.php') ?>
-<?php include('banner.php') ?>
-<?php include('sobre.php') ?>
-<?php include('servicos.php') ?>
-<?php include('calculo-cep.php') ?>
-<?php include('footer.php') ?>
+<?php include('components/navbar.php') ?>
+<?php include('pages/banner.php') ?>
+<?php include('pages/sobre.php') ?>
+<?php include('pages/servicos.php') ?>
+<?php include('pages/calculo-cep.php') ?>
+<?php include('pages/footer.php') ?>
 </body>
-<?php include('scripts.php') ?>
+<?php include('pages/scripts.php') ?>
 <script>
     document.getElementById('cepForm').addEventListener('submit', function (event) {
         event.preventDefault();

@@ -32,6 +32,19 @@ function create($id_colaborador, $descricao)
     }
 }
 
+function check($id)
+{
+    $db = new Database();
+
+    $sql = "update requests set status = 1 where id = $id";
+    $stmt = $db->conexao->prepare($sql);
+    if ($stmt->execute()) {
+        echo json_encode(["status" => true, "mensagem" => "Solicitação editada com sucesso!"]);
+    } else {
+        echo json_encode(["status" => false, "mensagem" => "Ocorreu um erro ao criar a solicitação!"]);
+    }
+}
+
 if (isset($_POST)) {
     if ($_POST["metodo"] == "get") {
         get();
@@ -39,5 +52,9 @@ if (isset($_POST)) {
 
     if ($_POST["metodo"] == "create") {
         create($_POST["id_colaborador"], $_POST["descricao"]);
+    }
+
+    if ($_POST["metodo"] == "check") {
+        check($_POST["id"]);
     }
 }

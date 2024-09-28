@@ -47,7 +47,7 @@
             <div class="col-md-3">
                 <h3 class="titulo-footer">SheWork</h3>
                 <ul class="list-unstyled lista-footer">
-                    <li><a href="index.php" title="Início">Início</a></li>
+                    <li><a href="../index.php" title="Início">Início</a></li>
                     <li><a href="painel.php?go=sobre-nos" title="Quem somos">Quem somos</a></li>
                     <li><a href="painel.php?go=colaborador" title="Seja uma colaboradora">Seja uma colaboradora</a></li>
                     <li><a href="painel.php?go=servicos" title="Serviços">Serviços</a></li>
@@ -57,7 +57,7 @@
             <div class="col-md-4">
                 <h3 class="titulo-footer">Acessibilidade</h3>
                 <ul class="list-unstyled lista-footer">
-                    <li><a href="index.php?=calculo-cep" class="d-flex">Como participo?<i
+                    <li><a href="../index.php?=calculo-cep" class="d-flex">Como participo?<i
                                     class="fal fa-external-link-alt i-footer"></i></a></li>
                     <li><a href="painel.php?=sobre-nos">Quem somos</a></li>
                     <li><a href="painel.php?=colaborador">Seja uma colaboradora</a></li>

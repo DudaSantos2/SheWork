@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="img-tabs">
-                        <img src="assets/img/img-vantagens.jpg"
+                        <img src="../assets/img/img-vantagens.jpg"
                         width="100%"
                         alt="">
                     </div>
