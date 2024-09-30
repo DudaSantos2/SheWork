@@ -4,13 +4,27 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-function get()
+function get($cep, $user, $status)
 {
     $db = new Database();
 
+    $where = "";
+
+    if (!empty($cep)) {
+        $where .= " AND u.cep like '%$cep%'";
+    }
+
+    if (!empty($user)) {
+        $where .= " AND u.name like '%$user%'";
+    }
+
+    if (!empty($status) || $status == "0") {
+        $where .= " AND requests.status = '$status'";
+    }
+
     $id = $_SESSION['user']['id'];
 
-    $sql = "select requests.*, u.name, u.email, u.phone from requests left join users u on u.id = requests.id_usuario where id_colaborador = $id";
+    $sql = "select requests.*, u.name, u.email, u.phone, u.cep from requests left join users u on u.id = requests.id_usuario where id_colaborador = $id $where";
     $query = $db->conexao->query($sql);
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -47,7 +61,7 @@ function check($id)
 
 if (isset($_POST)) {
     if ($_POST["metodo"] == "get") {
-        get();
+        get($_POST['cep'], $_POST['user'], $_POST['status']);
     }
 
     if ($_POST["metodo"] == "create") {

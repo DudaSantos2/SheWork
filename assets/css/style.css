@@ -93,12 +93,12 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
-button.btn.btn-primary {
+.btn.btn-primary {
     background-color: #9B2BCF!important;
     border: 1px solid #9B2BCF!important;
 }
 
-button.btn.btn-primary:hover {
+.btn.btn-primary:hover {
     background-color: #6A0DAD!important;
     border: 1px solid #6A0DAD!important;
 }

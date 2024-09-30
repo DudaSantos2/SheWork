@@ -32,6 +32,6 @@ if (!isset($_SESSION)) {
 
 <script>
     function voltaHome() {
-        window.location.href = "/pit/pages/home.php"
+        history.back();
     }
 </script>

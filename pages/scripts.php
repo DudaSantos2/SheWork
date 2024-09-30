@@ -11,7 +11,9 @@
 <script>
     $(document).ready(function () {
         $('#telefone').mask('(00) 00000-0000');
+        $('#phone-filter').mask('(00) 00000-0000');
         $('#cep').mask('00000-000');
+        $('#cep-filter').mask('00000-000');
     });
 </script>
 <script>
