@@ -1,5 +1,6 @@
 create
 database shework;
+
 use
 shework;
 

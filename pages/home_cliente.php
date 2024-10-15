@@ -213,11 +213,11 @@ if (!isset($_SESSION['user'])) {
                             <div class="mb-4" style="border: solid 1px #4f4f4f;background-size: ${collaborator.avatar ? "cover" : "contain"}; background-repeat: no-repeat; background-position: center;border-radius: 1000px; background-image: url('${src}'); width: 80px; height: 80px"></div>
                             <div class="d-flex flex-column gap-3 align-items-end">
                                 <div class="avaliacao readonly">
-                                    <div class="star"><span class="fa fa-star"></span></div>
-                                    <div class="star"><span class="fa fa-star"></span></div>
-                                    <div class="star"><span class="fa fa-star"></span></div>
-                                    <div class="star"><span class="fa fa-star"></span></div>
-                                    <div class="star"><span class="fa fa-star"></span></div>
+                                    <div class="star${collaborator.id}"><span class="fa fa-star"></span></div>
+                                    <div class="star${collaborator.id}"><span class="fa fa-star"></span></div>
+                                    <div class="star${collaborator.id}"><span class="fa fa-star"></span></div>
+                                    <div class="star${collaborator.id}"><span class="fa fa-star"></span></div>
+                                    <div class="star${collaborator.id}"><span class="fa fa-star"></span></div>
                                 </div>
                                 <p style="color: #343434">${collaborator.quantidade} avaliações</p>
                             </div>
@@ -239,7 +239,7 @@ if (!isset($_SESSION['user'])) {
 
                 $('#container-cards').append(card)
 
-                $('.star span').each((index, item) => {
+                $(`.star${collaborator.id} span`).each((index, item) => {
                     if (index >= parseInt(collaborator.media) || !collaborator.media) {
                         return;
                     }

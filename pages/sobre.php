@@ -4,7 +4,7 @@
     <div class="container sec">
         <div class="row">
             <div class="col-md-5">
-                <img src="../assets/img/sobre.jpg" class="wow animate__animated animate__fadeInLeft" data-wow-duration="2s" width="100%" alt="">
+                <img src="/pit/assets/img/sobre.jpg" class="wow animate__animated animate__fadeInLeft" data-wow-duration="2s" width="100%" alt="">
             </div>
             <div class="col-md-7">
                 <div class="mt-20">
@@ -12,7 +12,7 @@
                     <p class="text-sobre">Na She Work, oferecemos serviços de "marido de aluguel" realizados exclusivamente por mulheres e disponíveis apenas para outras mulheres. Nossa equipe é dedicada a proporcionar segurança, conforto e excelência, garantindo que cada cliente receba atendimento de alta qualidade em suas necessidades de manutenção e reparos.</p>
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-end">
-                            <a href="painel.php?go=sobre-nos" class="link-efeito">Conheça mais</a>
+                            <a href="/pit/pages/painel.php?go=sobre-nos" class="link-efeito">Conheça mais</a>
                         </div>
                     </div>
                 </div>

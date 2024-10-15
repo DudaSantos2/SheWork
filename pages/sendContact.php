@@ -4,7 +4,7 @@ $assunto = "Contato Site She Work"; // Assunto do e-mail
 $fromMail = "contatoshework@gmail.com"; // E-mail que envia
 $replyto = ""; // Responder para
 $mailto = "inhegas4@gmail.com"; // E-mail para onde enviar
-$url = 'http://sheworkbh.infinityfreeapp.com'; // URL do site
+$url = 'http://localhost:8080/pit/'; // URL do site
 $paginaSucesso = "index-sucesso.php"; // Redirecionar para página caso o e-mail tenha sido enviado
 
 // Pega os valores dos campos do formulário
@@ -12,19 +12,27 @@ $Nome = $_POST["nome"];
 $Fone = $_POST["telefone"];
 $Email = $_POST["email"];
 $Mensagem = $_POST["mensagem"];
-$urldestino = "http://sheworkbh.infinityfreeapp.com/painel.php?go=index-sucesso";
+$urldestino = "http://localhost:8080/pit/painel.php?go=index-sucesso";
 
 // Monta o corpo do e-mail
-$Vai = "
-E-mail de contato\n
+$Vai = "E-mail de contato\n
 Nome: $Nome\n\n
 E-mail: $Email\n\n
 Telefone: $Fone\n\n
 Mensagem: $Mensagem\n";
 
-require_once("phpmailer/class.phpmailer.php");
+$res = mail($fromMail, $assunto, $Vai, ["From" => $Email]);
 
-function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
+if ($res) {
+    header("Location: $urldestino");
+}
+
+var_dump($res);
+
+/*require_once("../phpmailer/class.phpmailer.php");
+
+function smtpmailer($para, $de, $de_nome, $assunto, $corpo)
+{
     global $error;
     $mail = new PHPMailer();
     $mail->isSMTP(); // Ativar SMTP
@@ -34,7 +42,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
     $mail->Host = 'smtp.gmail.com'; // SMTP utilizado
     $mail->Port = 465; // Porta
     $mail->Username = 'contatoshework@gmail.com'; // Nome de usuário do SMTP
-    $mail->Password = 'txaq liii pavh itxj'; // Senha do SMTP
+    $mail->Password = 'txaqliiipavhitxj'; // Senha do SMTP
     $mail->SetFrom($de, $de_nome); // E-mail e nome do remetente
     $mail->addReplyTo($de, $de_nome); // E-mail e nome para responder
     $mail->Subject = $assunto; // Assunto
@@ -42,7 +50,7 @@ function smtpmailer($para, $de, $de_nome, $assunto, $corpo) {
     $mail->addAddress($para); // Endereço do destinatário
 
     if (!$mail->Send()) {
-        $error = 'Mail error: '.$mail->ErrorInfo;
+        $error = 'Mail error: ' . $mail->ErrorInfo;
         return false;
     } else {
         $error = 'Mensagem enviada!';
@@ -58,5 +66,5 @@ if (smtpmailer($mailto, $fromMail, 'She Work', $assunto, $Vai)) {
 
 if (!empty($error)) {
     echo $error; // Exibe mensagem de erro
-}
-?>
+}*/
+

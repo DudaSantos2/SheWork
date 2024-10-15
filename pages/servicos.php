@@ -158,7 +158,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <a href="painel.php?go=construcao" class="link-servico">
+                <a href="/pit/pages/painel.php?go=login" class="link-servico">
                     <div class="card-servico wow animate__animated animate__fadeInLeft" data-wow-duration="2.2s">
                         <div>
                             <h3 class="icon-card"><i class="fal fa-plus"></i><span class="ml-5">129 Serviços</span></h3>
