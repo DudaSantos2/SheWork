@@ -138,7 +138,10 @@ if (!isset($_SESSION['user'])) {
         form.append("user", user);
         form.append("status", status);
 
-        fetch("../backend/requests/RequestController.php", {method: "POST", body: form}).then(async (res) => {
+        fetch("../backend/controllers/requests/RequestController.php", {
+            method: "POST",
+            body: form
+        }).then(async (res) => {
             $('#container-cards').empty()
 
             const requests = await res.json();
@@ -230,7 +233,7 @@ if (!isset($_SESSION['user'])) {
                 body.append("metodo", "check");
                 body.append("id", id);
 
-                fetch("../backend/requests/RequestController.php", {method: "POST", body})
+                fetch("../backend/controllers/requests/RequestController.php", {method: "POST", body})
                     .then(async (res) => {
                         const response = await res.json();
 

@@ -1,17 +1,14 @@
 <?php
-require_once '../Database.php';
 if (!isset($_SESSION)) {
     session_start();
 }
 
-$db = new Database();
-
 $email = $_POST['email'];
 $password = md5($_POST['password']);
 
-$userExistsSql = "select * from users where email = '$email'";
-$queryUserExists = $db->conexao->query($userExistsSql);
-$result = $queryUserExists->fetch(PDO::FETCH_ASSOC);
+$userDao = new UserDao();
+
+$result = $userDao->getByEmail($email);
 
 if (!$result) {
     echo json_encode(["status" => false, "resposta" => "Usuário inexistente!"]);

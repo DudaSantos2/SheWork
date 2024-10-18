@@ -177,7 +177,7 @@ if (!isset($_SESSION['user'])) {
         form.append('email', email);
         form.append('phone', phone);
 
-        fetch("../backend/collaborator/CollaboratorController.php", {
+        fetch("../backend/controllers/collaborator/CollaboratorController.php", {
             method: "POST",
             body: form
         }).then(async (res) => {
@@ -321,7 +321,7 @@ if (!isset($_SESSION['user'])) {
             body.append("id_colaborador", $("#colaborador_atual").val())
             body.append("descricao", $("#descricao").val())
 
-            fetch("../backend/requests/RequestController.php", {method: "POST", body})
+            fetch("../backend/controllers/requests/RequestController.php", {method: "POST", body})
                 .then(async (res) => {
                     const response = await res.json()
 
@@ -356,7 +356,7 @@ if (!isset($_SESSION['user'])) {
             body.append("id_colaborador", $("#colaborador_atual").val());
             body.append("nota", nota);
 
-            fetch("../backend/reviews/ReviewController.php", {method: "POST", body})
+            fetch("../backend/controllers/reviews/ReviewController.php", {method: "POST", body})
                 .then(async (res) => {
                     const json = await res.json();
 

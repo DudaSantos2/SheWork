@@ -80,7 +80,7 @@
         form.append("email", $('#email').val());
         form.append("password", $('#password').val());
 
-        fetch("../backend/auth/LoginController.php", {method: 'POST', body: form}).then(async res => {
+        fetch("../backend/controllers/auth/LoginController.php", {method: 'POST', body: form}).then(async res => {
             const response = await res.json();
 
             if (!response.status) {

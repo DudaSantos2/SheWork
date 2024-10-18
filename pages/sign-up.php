@@ -88,7 +88,7 @@
     })
 
     function BuscarServicos() {
-        fetch("../backend/services/ServiceController.php", {method: 'GET'})
+        fetch("../backend/controllers/services/ServiceController.php", {method: 'GET'})
             .then(async (res) => {
                     const resJson = await res.json();
 
@@ -152,7 +152,7 @@
             form.append('servico', $('#servicos').val())
         }
 
-        fetch("../backend/auth/RegisterController.php", {method: 'POST', body: form}).then(res => {
+        fetch("../backend/controllers/auth/RegisterController.php", {method: 'POST', body: form}).then(res => {
             swal.fire({
                 title: "Sucesso",
                 icon: "success",

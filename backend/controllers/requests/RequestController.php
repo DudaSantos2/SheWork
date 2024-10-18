@@ -1,45 +1,27 @@
 <?php
-require_once '../Database.php';
 if (!isset($_SESSION)) {
     session_start();
 }
 
 function get($cep, $user, $status)
 {
-    $db = new Database();
-
-    $where = "";
-
-    if (!empty($cep)) {
-        $where .= " AND u.cep like '%$cep%'";
-    }
-
-    if (!empty($user)) {
-        $where .= " AND u.name like '%$user%'";
-    }
-
-    if (!empty($status) || $status == "0") {
-        $where .= " AND requests.status = '$status'";
-    }
-
     $id = $_SESSION['user']['id'];
 
-    $sql = "select requests.*, u.name, u.email, u.phone, u.cep from requests left join users u on u.id = requests.id_usuario where id_colaborador = $id $where";
-    $query = $db->conexao->query($sql);
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $requestDao = new RequestDao();
+
+    $result = $requestDao->get($cep, $user, $status, $id);
 
     echo json_encode(["status" => true, "dados" => $result]);
 }
 
 function create($id_colaborador, $descricao)
 {
-    $db = new Database();
-
     $id_usuario = $_SESSION['user']['id'];
 
-    $sql = "insert into requests (id_usuario, id_colaborador, descricao) values ($id_usuario, $id_colaborador, '$descricao')";
-    $stmt = $db->conexao->prepare($sql);
-    if ($stmt->execute()) {
+    $request = new Request($id_usuario, $id_colaborador, $descricao);
+    $requestDao = new RequestDao();
+
+    if ($requestDao->create($request)) {
         echo json_encode(["status" => true, "mensagem" => "Solicitação criada com sucesso!"]);
     } else {
         echo json_encode(["status" => false, "mensagem" => "Ocorreu um erro ao criar a solicitação!"]);
@@ -48,11 +30,9 @@ function create($id_colaborador, $descricao)
 
 function check($id)
 {
-    $db = new Database();
+    $requestDao = new RequestDao();
 
-    $sql = "update requests set status = 1 where id = $id";
-    $stmt = $db->conexao->prepare($sql);
-    if ($stmt->execute()) {
+    if ($requestDao->check($id)) {
         echo json_encode(["status" => true, "mensagem" => "Solicitação editada com sucesso!"]);
     } else {
         echo json_encode(["status" => false, "mensagem" => "Ocorreu um erro ao criar a solicitação!"]);

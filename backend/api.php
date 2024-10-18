@@ -24,5 +24,4 @@ if (isset($_GET['cep'])) {
 } else {
     echo json_encode(['status' => 'error', 'message' => 'CEP não fornecido']);
 }
-?>
 

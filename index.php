@@ -24,7 +24,7 @@
         resultDiv.innerHTML = '';
 
 
-        fetch('api.php?cep=' + encodeURIComponent(cep))
+        fetch('/pit/backend/api.php?cep=' + encodeURIComponent(cep))
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
