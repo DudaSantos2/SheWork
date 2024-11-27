@@ -76,6 +76,15 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="grupo-quemsomos">
+                                <img src="../assets/img/victor.jpeg"
+                                     width="100"
+                                     heigth="100"
+                                     class="img-grupo-quemsomos mt-2" alt="">
+                                <h5 class="mt-3 cor-primaria"><strong>DEV</strong><br>Victor Lucas</h5>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="grupo-quemsomos">
                                 <img src="../assets/img/eduarda.jpeg"
                                      width="100"
                                      heigth="100"
