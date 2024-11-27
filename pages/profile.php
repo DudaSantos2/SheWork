@@ -67,7 +67,7 @@ if (!empty($_SESSION['user']['avatar'])) {
 
                     body.append("metodo", "delete");
 
-                    fetch("../backend/controllers/users/UserController", {method: "POST", body})
+                    fetch("../backend/controllers/users/UserController.php", {method: "POST", body})
                         .then(async (res) => {
                             const json = await res.json();
 
@@ -119,7 +119,7 @@ if (!empty($_SESSION['user']['avatar'])) {
                 form.append('avatar', file[0]);
                 form.append('metodo', 'update')
 
-                fetch("../backend/controllers/users/UserController", {method: "POST", body: form})
+                fetch("../backend/controllers/users/UserController.php", {method: "POST", body: form})
                     .then(async (res) => {
                         const json = await res.json()
 
