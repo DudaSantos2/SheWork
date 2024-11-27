@@ -12,7 +12,7 @@ function get($cep, $email, $phone)
     $result = $userDao->get($cep, $email, $phone);
 
     foreach ($result as $key => $value) {
-        if (!empty($value)) $result[$key]['avatar'] = base64_encode($value['avatar']);
+        if (!empty($value['avatar'])) $result[$key]['avatar'] = base64_encode($value['avatar']);
     }
 
     if ($result) {
