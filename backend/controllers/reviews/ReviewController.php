@@ -3,6 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+require_once "../../DAO/ReviewDao.php";
+require_once "../../models/Review.php";
+
 function create($id_colaborador, $nota)
 {
     $id_usuario = $_SESSION['user']['id'];

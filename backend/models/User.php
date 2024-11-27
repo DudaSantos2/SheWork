@@ -9,7 +9,7 @@ class User
         $phone,
         $cep,
         $isCollaborator,
-        $id_servico,
+        $id_servico = null,
         $avatar = "")
     {
         $this->setEmail($email);
@@ -18,7 +18,7 @@ class User
         $this->setPhone($phone);
         $this->setCep($cep);
         $this->setIsCollaborator($isCollaborator);
-        $this->setIdServico($id_servico);
+        if ($id_servico) $this->setIdServico($id_servico);
         $this->setAvatar($avatar);
     }
 
@@ -28,7 +28,7 @@ class User
     private string $phone;
     private string $cep;
     private bool $isCollaborator;
-    private int $id_servico;
+    private ?int $id_servico = null;
     private string $avatar;
 
     /**
@@ -58,7 +58,7 @@ class User
     /**
      * @return int
      */
-    public function getIdServico(): int
+    public function getIdServico(): int|null
     {
         return $this->id_servico;
     }

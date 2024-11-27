@@ -1,4 +1,6 @@
 <?php
+require_once "../../Database.php";
+require_once "../../models/Review.php";
 
 class ReviewDao extends Database
 {

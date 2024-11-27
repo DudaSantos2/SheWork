@@ -58,7 +58,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="grupo-quemsomos">
-                                <img src="../assets/pablo.jpg"
+                                <img src="../assets/img/pablo.jpeg"
                                      width="100"
                                      heigth="100"
                                      class="img-grupo-quemsomos mt-2" alt="">
@@ -67,7 +67,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="grupo-quemsomos">
-                                <img src="../assets/pedroca.jpg"
+                                <img src="../assets/img/pedro.jpeg"
                                      width="100"
                                      heigth="100"
                                      class="img-grupo-quemsomos mt-2" alt="">
@@ -76,7 +76,7 @@
                         </div>
                         <div class="swiper-slide">
                             <div class="grupo-quemsomos">
-                                <img src="../assets/momo.jpg"
+                                <img src="../assets/img/eduarda.jpeg"
                                      width="100"
                                      heigth="100"
                                      class="img-grupo-quemsomos mt-2" alt="">

@@ -3,6 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+require_once "../../DAO/UserDao.php";
+
 function update()
 {
     if (isset($_FILES)) {

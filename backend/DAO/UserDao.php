@@ -1,6 +1,6 @@
 <?php
-require_once "../Database.php";
-require_once "../models/User.php";
+require_once "../../Database.php";
+require_once "../../models/User.php";
 
 class UserDao extends Database
 {
@@ -26,12 +26,13 @@ class UserDao extends Database
         $cep = $user->getCep();
         $isCollaborator = $user->getIsCollaborator();
         $idServico = $user->getIdServico();
+
         $stmt->bindParam(":email", $email);
         $stmt->bindParam(":password", $password);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":phone", $phone);
         $stmt->bindParam(":cep", $cep);
-        $stmt->bindParam(":isCollaborator", $isCollaborator);
+        $stmt->bindParam(":isCollaborator", $isCollaborator, PDO::PARAM_BOOL);
         $stmt->bindParam(":idServico", $idServico);
 
         $stmt->execute();
@@ -63,15 +64,15 @@ class UserDao extends Database
         $where = "";
 
         if (!empty($cep)) {
-            $where .= " AND cep like '%:cep%'";
+            $where .= " AND cep like '%$cep%'";
         }
 
         if (!empty($email)) {
-            $where .= " AND email like '%:email%'";
+            $where .= " AND email like '%$email%'";
         }
 
         if (!empty($phone)) {
-            $where .= " AND phone like '%:phone%'";
+            $where .= " AND phone like '%$phone%'";
         }
 
         $sql = "SELECT 
@@ -85,22 +86,17 @@ class UserDao extends Database
             GROUP BY users.id
             HAVING quantidade is not null";
 
-        $stmt = $this->conexao->prepare($sql);
+        $query = $this->conexao->query($sql);
 
-        $stmt->bindParam(":cep", $cep);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":phone", $phone);
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getByEmail($email)
     {
-        $userExistsSql = "SELECT * FROM users WHERE email = :email";
+        $userExistsSql = "SELECT * FROM users WHERE email = '$email'";
 
-        $stmt = $this->conexao->prepare($userExistsSql);
-        $stmt->bindParam(":email", $email);
+        $query = $this->conexao->query($userExistsSql);
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }

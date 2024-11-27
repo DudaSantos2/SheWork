@@ -10,6 +10,17 @@ create table servicos
     descricao varchar(255)
 );
 
+insert into servicos
+(descricao)
+values
+    ('Eletricista'),
+    ('Encanadora'),
+    ('Técnica'),
+    ('Borracheira'),
+    ('Fotógrafa'),
+    ('Bartender'),
+    ('Mecânica');
+
 create table users
 (
     id             int primary key auto_increment,

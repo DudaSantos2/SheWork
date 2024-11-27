@@ -2,6 +2,10 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+
+require_once '../../DAO/UserDao.php';
 
 $email = $_POST['email'];
 $password = md5($_POST['password']);

@@ -1,4 +1,6 @@
 <?php
+require_once "../../DAO/ServiceDao.php";
+
 $serviceDao = new ServiceDao();
 
 $result = $serviceDao->all();

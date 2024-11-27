@@ -1,12 +1,13 @@
 <?php
+
 class Database
 {
     public $conexao;
 
     public function __construct() {
-        $dbHost = 'mysql:host=localhost;dbname=shework';
+        $dbHost = 'mysql:host=127.0.0.1;dbname=shework';
         $dbUsername = 'root';
-        $dbPassword = '';
-        $this->conexao = new \PDO($dbHost, $dbUsername, $dbPassword);
+        $dbPassword = 'serra';
+        $this->conexao = new PDO($dbHost, $dbUsername, $dbPassword);
     }
 }

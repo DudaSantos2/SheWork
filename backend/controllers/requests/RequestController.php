@@ -2,6 +2,8 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+require_once "../../DAO/RequestDao.php";
+require_once "../../models/Request.php";
 
 function get($cep, $user, $status)
 {
